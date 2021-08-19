@@ -1,4 +1,4 @@
-const { chatBot } = require('reconlx');
+
 const fetch = require("node-fetch");
 const client = require("../index");
 const Schema = require("../models/chatbot-channel");

@@ -3,7 +3,6 @@ const fs = require('fs')
 const fetch = require("node-fetch");
 const db =require("quick.db");
 const client = new Client({
-  intents: 32767,
   disableEveryone: true,
 	
 	
