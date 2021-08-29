@@ -11,7 +11,7 @@ module.exports = {
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-    if(!message.content.startsWith('**'))return;  
+    if(!message.content.startsWith('a!'))return;  
 
     
      const embed = new MessageEmbed()

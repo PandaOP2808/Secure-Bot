@@ -8,6 +8,7 @@ module.exports = {
     usage: '..blackjack (amount)',
     cooldown: 9,
     cooldowny: 1,
+    timeout: 1,
     permissions: ["NONE"],
 	
     run: async(client, message, args) => {

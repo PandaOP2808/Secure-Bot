@@ -16,7 +16,7 @@ const Timeout = new Collection();
 const config = require('./config.json')
 const prefix = config.prefix
 const ms = require('ms')
-const token = config.token
+const token = process.env.token
 
 //___________________________________________________________________________                          CLIENTS
 
@@ -27,6 +27,7 @@ client.categories = fs.readdirSync("./commands/");
 client.commands = new Collection();
 client.slashCommands = new Collection();
 client.config = require("./config.json");
+// Initializing the project
 
 
 
@@ -37,7 +38,7 @@ client.config = require("./config.json");
 //                            STATUS 
 //_________________________________________________________________________
 client.on("ready", () => {
-    console.log(`${client.user.username} ✅
+    console.log(`${client.user.username} ✅.
 
 	
 ░█████╗░░██████╗████████╗██████╗░██╗███████╗██╗░░██╗
@@ -228,6 +229,76 @@ for (const file of commandFiles) {
 }
 //\\\\\\\\\\\\\\\\\\\}}}}}}}}}}}}}}}}}|||||||||||||||||||||||||||
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+global.client = client
+
+process.on('unhandledRejection', error => {
+    console.log(`UnhandledPromiseRejection : ${error}\n`)
+});
+
+client.on('ready', async () => {
+    
+    console.log(`\nLogged in : ${client.user.tag}\n`)
+    
+
+    const commandFiles = fs.readdirSync('./slash').filter(file => file.endsWith('.js'));
+    for (const file of commandFiles) {
+        const command = require(`./slash/${file}`);
+        client.api.applications(client.user.id).guilds('852508823577952256').commands.post({ data: {
+            name: command.name,
+            description: command.description,
+            options: command.commandOptions
+        }})
+        if (command.global == true) {
+            client.api.applications(client.user.id).commands.post({ data: {
+                name: command.name,
+                description: command.description,
+                options: command.commandOptions
+            }})
+        }
+        client.commands.set(command.name, command);
+        console.log(`Command POST : ${command.name} from ${file} (${command.global ? "global" : "guild"})`)
+    }
+    console.log("")
+    
+    let cmdArrGlobal = await client.api.applications(client.user.id).commands.get()
+    let cmdArrGuild = await client.api.applications(client.user.id).guilds('828267749544820787').commands.get()
+    cmdArrGlobal.forEach(element => {
+        console.log("Global command loaded : " + element.name + " (" + element.id + ")" )
+    });
+    console.log("")
+    cmdArrGuild.forEach(element => {
+        console.log("Guild command loaded : " + element.name + " (" + element.id + ")")
+    });
+    console.log("")
+});
+
+client.ws.on('INTERACTION_CREATE', async interaction => {
+
+    if (!client.commands.has(interaction.data.name)) return;
+
+    try {
+        client.commands.get(interaction.data.name).execute(interaction);
+    } catch (error) {
+        console.log(`Error from command ${interaction.data.name} : ${error.message}`);
+        console.log(`${error.stack}\n`)
+        client.api.interactions(interaction.id, interaction.token).callback.post({data: {
+			type: 4,
+			data: {
+					content: `Sorry, there was an error executing that command!`
+				}
+			}
+		})
+    }
+    
+})
 
 
 

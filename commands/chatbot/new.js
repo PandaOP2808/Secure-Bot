@@ -17,10 +17,9 @@ module.exports = {
             }).save()
 
             const embed = new MessageEmbed()
-            .setThumbnail(client.user.displayAvatarURL())
             
             .setColor('RED')
-            .addFields(`Saved chatbot channel to the channel u mentioned`)
+            .setDescription(`Saved chatbot channel to the channel u mentioned`)
             
             await message.channel.send(embed)
         })

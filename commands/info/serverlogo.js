@@ -3,6 +3,7 @@ const { MessageEmbed } = require("discord.js")
 module.exports = { // Your Command Handler
     name : 'serverlogo',
     
+    
     description: 'Gives logo of Server',
     timeout: 0.1,
 

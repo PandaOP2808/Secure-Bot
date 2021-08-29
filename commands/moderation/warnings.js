@@ -2,7 +2,7 @@ const { Client, Message, MessageAttachment, MessageEmbed } = require('discord.js
 const db = require("quick.db");
 
 module.exports = {
-  name: "warnings",
+  name: "check-warn",
   timeout: 1,
   description: "Get the warnings of yours or mentioned person",
   category: "moderation",

@@ -3,7 +3,7 @@ const Schema = require("../../models/chatbot-channel");
 
 
 module.exports = {
-    name: 'stop-chatbot',
+    name: 'disable-chatbot',
     timeout: 1,
     run: async(client, message, args) => {
 
