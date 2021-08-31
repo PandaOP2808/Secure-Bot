@@ -21,17 +21,16 @@ Why not make your code cleaner and easier to acess when you can, follow these ea
 
 I U ALL WANT TO MIX THEM THEN THAT ALSO U ALL CAN DO BUT HAVE TO CHNGE SOME LINES FOR THAT CONTACT ME ON MY DISCORD SETVER 
 
-READ STEPS DOWN TO RUN BOT```
+READ STEPS DOWN TO RUN BOT
 
 
 # Steps
-```css
+
 1. Download the code from the github repo OR Just clone it
 2. Edit ```config.js file with your Prefix and other things``` And Rename the ```.env.example``` => to ```.env``` Then Edit The file
 3. When you have it in the code editor run command ```npm i``` in the terminal.
 4. Start up the bot with ```node .``` in the terminal 
 5. If the Terminal is suggesting u to download any more module download by ```npm i <name of the module``` 
-```
 
 
 # Contacts
