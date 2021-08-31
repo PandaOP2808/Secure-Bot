@@ -4,10 +4,10 @@ const ascii = require('ascii-table')
 let table = new ascii("Commands");
 table.setHeading('Command', ' Load status');
 module.exports= (client) => {
-    readdirSync('./commands/').forEach(dir => {
-        const commands = readdirSync(`./commands/${dir}/`).filter(file => file.endsWith('.js'));
+    readdirSync('./commandss/').forEach(dir => {
+        const commands = readdirSync(`./commandss/${dir}/`).filter(file => file.endsWith('.js'));
         for(let file of commands){
-            let pull = require(`../commands/${dir}/${file}`);
+            let pull = require(`../commandss/${dir}/${file}`);
             if(pull.name){
                 client.commands.set(pull.name, pull);
                 table.addRow(file,'✅')
@@ -19,13 +19,13 @@ module.exports= (client) => {
     });
     console.log(table.toString());
 
-    readdirSync("./events/").forEach((file) => {
-        const events = readdirSync("./events/").filter((file) =>
+    readdirSync("./events1/").forEach((file) => {
+        const events = readdirSync("./events1/").filter((file) =>
           file.endsWith(".js")
         );
     
         for (let file of events) {
-          let pull = require(`../events/${file}`);
+          let pull = require(`../events1/${file}`);
     
           if (pull.name) {
             client.events.set(pull.name, pull);

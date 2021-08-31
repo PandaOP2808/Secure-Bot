@@ -14,7 +14,7 @@ const astriex = new Client({
 module.exports = client;
 const Timeout = new Collection();
 const config = require('./config.json')
-const prefix = config.prefix
+const prefix = process.env.prefix
 const ms = require('ms')
 const token = process.env.token
 
@@ -23,7 +23,7 @@ const token = process.env.token
 client.commands = new Collection();
 client.snipes = new Collection();
 client.aliases = new Collection();
-client.categories = fs.readdirSync("./commands/");
+client.categories = fs.readdirSync("./commandss/");
 client.commands = new Collection();
 client.slashCommands = new Collection();
 client.config = require("./config.json");
@@ -222,9 +222,9 @@ return addexp(message)
 
   //Errors or questions? https://discord.gg/2EZSpxNB5z (Support server for weky npm)
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+const commandFiles = fs.readdirSync('./commandss').filter(file => file.endsWith('.js'));
 for (const file of commandFiles) {
-  const command = require(`./commands/${file}`);
+  const command = require(`./commandss/${file}`);
   bot.commands.set(command.name, command);
 }
 //\\\\\\\\\\\\\\\\\\\}}}}}}}}}}}}}}}}}|||||||||||||||||||||||||||
@@ -299,6 +299,10 @@ client.ws.on('INTERACTION_CREATE', async interaction => {
     }
     
 })
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const music = require("./index2")
 
 
 

@@ -1,37 +1,70 @@
-const client = require('../index')
-const prefix = client.prefix;
-const { Collection } = require('discord.js');
-const Timeout = new Collection();
-const ms = require('ms')
-const cooldowns = new Map();
-const custom = require ("../models/custom");
+/**
+ *
+ * @param {require("../structures/DiscordMusicBot")} client
+ * @param {require("discord.js").Message} message
+ * @returns {void} aka: nothing ;-;
+ */
 
+module.exports = async (client, message) => {
+  if (message.author.bot || message.channel.type === "dm") return;
+  let prefix = client.config.DefaultPrefix;
 
+  let GuildDB = await client.GetGuild(message.guild.id);
+  if (GuildDB && GuildDB.prefix) prefix = GuildDB.prefix;
 
+  //Initialize GuildDB
+  if (!GuildDB) {
+    await client.database.guild.set(message.guild.id, {
+      prefix: prefix,
+      DJ: null,
+    });
+    GuildDB = await client.GetGuild(message.guild.id);
+  }
 
+  //Prefixes also have mention match
+  const prefixMention = new RegExp(`^<@!?${client.user.id}> `);
+  prefix = message.content.match(prefixMention)
+    ? message.content.match(prefixMention)[0]
+    : prefix;
 
-client.on('message', async message =>{
-    if(message.author.bot) return;
-    if(!message.content.startsWith(prefix)) return;
-    if(!message.guild) return;
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    const cmd = args.shift().toLowerCase();
-    if(cmd.length == 0 ) return;
+  if (message.content.indexOf(prefix) !== 0) return;
 
+  const args = message.content.slice(prefix.length).trim().split(/ +/g);
+  //Making the command lowerCase because our file name will be in lowerCase
+  const command = args.shift().toLowerCase();
 
-    let command = client.commands.get(cmd)
-    if(!command) command = client.commands.get(client.aliases.get(cmd));
-    if (command) {
-        if(command.cooldown) {
-            if(Timeout.has(`${command.name}${message.author.id}`)) return
-			message.channel.send(`You are on a \`${ms(Timeout.get(`${command.name}${message.author.id}`) - Date.now(), {long : true})}\` cooldown.`)
-            command.run(client, message, args)
-            Timeout.set(`${command.name}${message.author.id}`, Date.now() + command.cooldown)
-            setTimeout(() => {
-                Timeout.delete(`${command.name}${message.author.id}`)
-            }, command.cooldown)
-        } else command.run(client, message, args);
+  //Searching a command
+  const cmd =
+    client.commands.get(command) ||
+    client.commands.find((x) => x.aliases && x.aliases.includes(command));
 
-    } 
-
-});
+  //Executing the codes when we get the command or aliases
+  if (cmd) {
+    if (
+      (cmd.permissions &&
+        cmd.permissions.channel &&
+        !message.channel
+          .permissionsFor(client.user)
+          .has(cmd.permissions.channel)) ||
+      (cmd.permissions &&
+        cmd.permissions.member &&
+        !message.channel
+          .permissionsFor(message.member)
+          .has(cmd.permissions.member)) ||
+      (cmd.permissions &&
+        GuildDB.DJ &&
+        !message.channel
+          .permissionsFor(message.member)
+          .has(["ADMINISTRATOR"]) &&
+        !message.member.roles.cache.has(GuildDB.DJ))
+    )
+      return client.sendError(
+        message.channel,
+        "Missing Permissions!" + GuildDB.DJ
+          ? " You need the `DJ` role to access this command."
+          : ""
+      );
+    cmd.run(client, message, args, { GuildDB });
+    client.CommandsRan++;
+  } else return;
+};
