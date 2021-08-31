@@ -9,7 +9,7 @@ module.exports = {
   ClientSecret: process.env.Discord_ClientSecret,
   Scopes: ["identify", "guilds", "applications.commands"], //Discord OAuth2 Scopes
   CallbackURL: "/api/callback", //Discord OAuth2 Callback URL
-  
+
   "24/7": true, //If you want the bot to be stay in the vc 24/7
   CookieSecret: "Pikachu is cute",//no need to edit if using this lava.link
   IconURL:
@@ -25,15 +25,7 @@ module.exports = {
     pass: "youshallnotpass", 
   },
   
-  //Alternate Lavalink
-  /*
-  Lavalink: {
-    id: "Main",
-    host: "lava.sudhan.tech",
-    port: 1234,
-    pass: "CodingWithSudhan", 
-  },
-  */
+
 
   //Please go to https://developer.spotify.com/dashboard/
   Spotify: {
