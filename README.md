@@ -23,8 +23,9 @@ I U ALL WANT TO MIX THEM THEN THAT ALSO U ALL CAN DO BUT HAVE TO CHNGE SOME LINE
 
 READ STEPS DOWN TO RUN BOT
 
-```
+
 # Steps
+```js
 1. Download the code from the github repo OR Just clone it
 2. Edit ```config.js file with your Prefix and other things``` And Rename the ```.env.example``` => to ```.env``` Then Edit The file
 3. When you have it in the code editor run command ```npm i``` in the terminal.
