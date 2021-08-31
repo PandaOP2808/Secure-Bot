@@ -21,7 +21,7 @@ Why not make your code cleaner and easier to acess when you can, follow these ea
 
 I U ALL WANT TO MIX THEM THEN THAT ALSO U ALL CAN DO BUT HAVE TO CHNGE SOME LINES FOR THAT CONTACT ME ON MY DISCORD SETVER 
 
-READ STEPS DOWN TO RUN BOT
+READ STEPS DOWN TO RUN BOT```
 
 
 # Steps
