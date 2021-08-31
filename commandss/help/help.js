@@ -28,31 +28,34 @@ module.exports = {
             .setDescription(`[ASTRIEX HELP COMMAND](https://discord.com/oauth2/authorize?client_id=819421344813809685&scope=bot%20applications.commands&permissions=8589934591)\n**__Astriex is a multi-purpose bot etc__**\n**Astriex prefix is \a!**
             
 
-**INFO**
+<:Astriexinfo:882230738563498054> **INFO**
 > \`\`\`help, ping, avatar, serverinfo, userinfo, snipe, translate, hack, say, math, urban, rank, math, membercount\`\`\`
 
-MODERATION COMMANDS
+<a:AstriexModerationCommands:882230178984648764> **MODERATION COMMANDS**
 > \`\`\`announce, kick, ban, mute, unmute, tempmute, warn, check-warn, resetwarns, addrole, removerole, antilink-on, anilink-off, afk, purge, lock, unlock\`\`\`
 
-**FUN**
+<:AstriexFUN:882230292813848577> **FUN**
 > \`\`\`connect4, snakegame, hangman, tictactoe, trivia, weather, translate, text-art, suffle\`\`\`
 
-**GIVEAWAY**
+<:AstriexGiveaway:882230023766036490> **GIVEAWAY**
 > \`\`\`gstart, gend, greroll\`\`\`
 
-**IMAGE**
+📷 **IMAGE**
 > \`\`\`image, trigger, meme, kiss, hug, slap, punch, maps\`\`\`
 
-<:AstriexMusic:866690332925100123> MUSIC
+<a:Astriexmusic:882229658362462258> MUSIC
 > \`\`\`play, pause, queue, remove, resume, search [song], shuffle, skip, skipto, volume, youtube , nowplaying, clear, search, bassboost <none | low | medium | high>, loop, loopqueue, lyrics, disconnect, grab, seek <time s/m/h>\`\`\`
 
-**CHATBOT**
+💭 **CHATBOT**
 > \`\`\`setchatbot, disablechatbot\`\`\`
 
-**BOT-INFO**
+💰 **ECONOMY**
+> \`\`\`balance, elb, beg, buy, deposit,fish, slots, work, weekly, daily, give, sell, withdraw, roulette\`\`\`
+
+<a:Astriexbotinfo:882231020894695435> **BOT-INFO**
 > \`\`\`botinfo, uptime, detail \`\`\`
 
-**LINKS**
+🔗 **LINKS**
 [invite me](https://discord.com/oauth2/authorize?client_id=819421344813809685&scope=bot%20applications.commands&permissions=8589934591) | [support server](https://discord.gg/X7Jc6FDhFw)
 `) 
 
