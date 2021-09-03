@@ -1,11 +1,11 @@
 <div align="center">
-  <a href="https://discord.gg/kMCpgYUAMV">
+  <a href="https://discord.gg/NTc8aZsE">
     <img src="https://user-images.githubusercontent.com/59381835/92191514-d649ad80-ee18-11ea-9bc4-e95c7a122a99.png" alt="Discord" width="80"/>
   
 </div>
 
 ### If you are you need support on the codes feel free to join the support server!
-  LINK = https://discord.gg/kMCpgYUAMV
+  LINK = https://discord.gg/NTc8aZsE
 
 
 # A COOL MULTI-PURPOSE BOT
@@ -34,5 +34,5 @@ READ STEPS DOWN TO RUN BOT
 
 
 # Contacts
-VISHAL#0001 on discord IF ANY ERROR
+ĦɌCӾ𒂟𝐈𝐌𝐏 •Pandaᴷᶜ†ᴱᴳ#9900 on discord IF ANY ERROR
 
